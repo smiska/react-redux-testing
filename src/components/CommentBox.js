@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import * as actions from 'actions'
 import { connect } from 'react-redux'
+import * as actions from 'actions'
 
 class ComboBox extends Component {
 
@@ -9,12 +9,17 @@ class ComboBox extends Component {
     handleChange = e => {
         this.setState({ comment: e.target.value })
     }
+    
     handleSubmit = e => {
         e.preventDefault()
         this.setState({ comment: ''})
         
         this.props.saveComment(this.state.comment)
         // call action creator of saving
+    }
+
+    fetchComments = e => {
+        //this.props.fetchComments(this.state.)
     }
   
     render() {
@@ -28,6 +33,9 @@ class ComboBox extends Component {
                         <button 
                             type='submit' 
                         >Submit comment</button>
+                        <button 
+                            type='button' onClick={this.fetchComments}
+                        >Fetch comments</button>
                     </div>
                 </form>
             </div>

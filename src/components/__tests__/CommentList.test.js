@@ -1,19 +1,28 @@
-import React from 'react';
-import CommentList from 'components/CommentList';
-import { shallow, mount, render } from 'enzyme';
+import CommentList from 'components/CommentList'
+import { shallow, mount, render } from 'enzyme'
+import React from 'react'
+import Root from 'Root'
 
-describe('App component tests', () => {
+let wrapped
 
-  afterAll => {
+beforeEach(() => {
+  const initialState = {
+    comments: ['Comment1', 'Comment2']
   }
+
+  wrapped = mount(
+    <Root initialState={ initialState }>
+      <CommentList>
+      </CommentList>
+    </Root>
+  )
+})
   
-  it('renders without crashing', () => {
-    const mockProps = { text: 'Way to go, champ!' }
-    const wrapper = shallow(CommentList(mockProps))
-    expect(wrapper).not.toBe(undefined)
-  });
-  
-  it('shows form', () => {
-    
-  })
+it('creates 1 <li> per comment', () => {
+  expect(wrapped.find('li').length).toEqual(2)
+});
+
+it('shows the text for each comments', () => {
+  expect(wrapped.render().text()).toContain('Comment1')
+  expect(wrapped.render().text()).toContain('Comment2')
 })

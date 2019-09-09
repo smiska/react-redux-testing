@@ -2,14 +2,15 @@ import React from 'react';
 import 'App.css';
 import CommentBox from './CommentBox';
 import CommentList from './CommentList';
-import store from 'redux'
 
 function App() {
   return (
     <div className="App">
     Hi there
     <CommentBox />
-    <CommentList />
+    <CommentList>
+
+    </CommentList>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
