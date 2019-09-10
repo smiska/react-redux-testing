@@ -1,32 +1,58 @@
-import React from 'react';
-import 'App.css';
-import CommentBox from './CommentBox';
-import CommentList from './CommentList';
+import React, { Component } from 'react'
+import { Route, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import 'App.css'
+import CommentBox from 'components/CommentBox'
+import CommentList from 'components/CommentList'
+import * as actions from 'actions'
 
-function App() {
-  return (
-    <div className="App">
-    Hi there
-    <CommentBox />
-    <CommentList>
 
-    </CommentList>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-  </header> */}
-    </div>
-  );
+
+class App extends Component {
+  renderButton = () => {
+    const handleClick = this.props.changeAuth
+    return (
+      <button onClick={() => handleClick(!this.props.auth)}>{this.props.auth ? 'Sign out': 'Sign in'}</button>
+    )
+  }
+
+  renderHeader = () => {
+    const headerStyles = {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      listStyle: 'none'
+    }
+
+    return (
+      <ul style={headerStyles}>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/post">Post a comment</Link>
+        </li>
+        <li>
+          {this.renderButton()}
+        </li>
+      </ul>
+    )
+  }
+
+  render = () => {
+    return (
+      <div className="App">
+        {this.renderHeader()}
+        Hi there
+        <Route path="/post" component={CommentBox} />
+        <Route path="/" exact component={CommentList} />
+      </div>
+    )
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return { auth: state.auth }
+}
+
+export default connect(mapStateToProps, actions)(App)

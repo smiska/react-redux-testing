@@ -17,10 +17,6 @@ class ComboBox extends Component {
         this.props.saveComment(this.state.comment)
         // call action creator of saving
     }
-
-    fetchComments = e => {
-        //this.props.fetchComments(this.state.)
-    }
   
     render() {
         return (
@@ -30,14 +26,14 @@ class ComboBox extends Component {
                     <textarea type='text' onChange={this.handleChange} value={this.state.comment}>
                     </textarea>
                     <div>
-                        <button 
-                            type='submit' 
-                        >Submit comment</button>
-                        <button 
-                            type='button' onClick={this.fetchComments}
-                        >Fetch comments</button>
+                        <button type='submit'>
+                            Submit comment
+                        </button>
                     </div>
                 </form>
+                <button id='fetch-comments-button' type='button' onClick={this.props.fetchComments}>
+                    Fetch comments
+                </button>
             </div>
         )
     }

@@ -21,9 +21,9 @@ describe('Commentbox component tests', () => {
         expect(wrapper).not.toBe(undefined)
       });
 
-    it('renders input & button', () => {
+    it('renders input & two buttons', () => {
         expect(wrapper.find('textarea').length).toBe(1)
-        expect(wrapper.find('button').length).toBe(1)
+        expect(wrapper.find('button').length).toBe(2)
     });
 
     describe('how textarea works', () => {

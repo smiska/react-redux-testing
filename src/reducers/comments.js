@@ -5,7 +5,8 @@ export default (state = [], action) => {
         case SAVE_COMMENT:
             return [...state, action.payload]
         case FETCH_COMMENT:
-            return [...state, action.payload]
+            const newComments = action.payload.data.map(c => c.name)
+            return [...state, ...newComments]
         default:
             return state
     }
