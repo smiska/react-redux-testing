@@ -3,6 +3,6 @@ import commentsReducer from 'reducers/comments'
 import authReducer from 'reducers/auth'
 
 export default combineReducers({
-    comments: commentsReducer,
-    auth: authReducer
+  comments: commentsReducer,
+  auth: authReducer
 })

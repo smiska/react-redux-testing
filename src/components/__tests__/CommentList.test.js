@@ -17,10 +17,10 @@ beforeEach(() => {
     </Root>
   )
 })
-  
+
 it('creates 1 <li> per comment', () => {
   expect(wrapped.find('li').length).toEqual(2)
-});
+})
 
 it('shows the text for each comments', () => {
   expect(wrapped.render().text()).toContain('Comment1')

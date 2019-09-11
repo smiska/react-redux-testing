@@ -2,29 +2,29 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 export default ChildComponent => {
-    class ComposedComponent extends Component {
-        componentDidMount() {
-            this.locsocs()
-        }
-    
-        componentDidUpdate() {
-            this.locsocs()
-        }
-    
-        locsocs() {
-            if(!this.props.auth) {
-            this.props.history.push('/')
-            }
-        }
-
-        render() {
-            return <ChildComponent />
-        }
+  class ComposedComponent extends Component {
+    componentDidMount () {
+      this.locsocs()
     }
 
-    function mapStateToProps(state) {
-        return { auth: state.auth }
+    componentDidUpdate () {
+      this.locsocs()
     }
 
-    return connect(mapStateToProps)(ComposedComponent)
+    locsocs () {
+      if (!this.props.auth) {
+        this.props.history.push('/')
+      }
+    }
+
+    render () {
+      return <ChildComponent {...this.props}/>
+    }
+  }
+
+  function mapStateToProps (state) {
+    return { auth: state.auth }
+  }
+
+  return connect(mapStateToProps)(ComposedComponent)
 }

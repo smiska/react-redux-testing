@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import * as actions from 'actions'
+import requireAuth from 'components/requireAuth'
 
-class ComboBox extends Component {
+class CommentBox extends Component {
 
     state = { comment: '' }
 
@@ -39,7 +40,7 @@ class ComboBox extends Component {
     }
 }
 
-export default connect(null, actions)(ComboBox) // mapstateToProps, actioncreators
+export default connect(null, actions)(requireAuth(CommentBox)) // mapstateToProps, actioncreators
 /* I'll learn hook testing later, I promise
 
     const [comment, setComment] = useState('')
