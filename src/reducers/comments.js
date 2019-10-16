@@ -1,5 +1,6 @@
 import { SAVE_COMMENT, FETCH_COMMENT } from 'actions/types'
 
+// https://www.smashingmagazine.com/2018/01/rise-state-machines/
 export default (state = [], action) => {
   switch (action.type) {
     case SAVE_COMMENT:
@@ -11,3 +12,6 @@ export default (state = [], action) => {
       return state
   }
 }
+
+// persistency in state machines when loadbalancing
+// state machine should always be decoupled from business logic
